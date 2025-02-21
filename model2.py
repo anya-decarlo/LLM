@@ -4,6 +4,7 @@ import seaborn as sns
 from sklearn.decomposition import PCA
 import umap
 import os
+from scipy.stats import entropy #Import Entropy Function
 
 # ---- EXPERIMENT SETUP ---- #
 experiment_dir = "transformer_experiment"
@@ -35,6 +36,7 @@ ground_truth_tokens = np.array([5, 7, 3, 2])
 embedding_history = []
 attention_history = []
 ffn_singular_values = []
+attention_entropy = [] 
 
 # ---- PLOTTING FUNCTION ---- #
 def plot_embeddings(embeddings, title, filename, method="PCA"):
@@ -59,21 +61,19 @@ def plot_embeddings(embeddings, title, filename, method="PCA"):
     plt.savefig(os.path.join(experiment_dir, filename))
     plt.close()
 
-    # ---- LOSS FUNCTION ---- #
+# ---- LOSS FUNCTION ---- #
 loss_history = []
 
-
-# ---- TRAINING LOOP ---- #
 def compute_cross_entropy_loss(predictions, target):
     one_hot_target = np.zeros_like(predictions)
     one_hot_target[np.arange(len(target)), target] = 1
     return -np.sum(one_hot_target * np.log(predictions + 1e-9)) / len(target)
 
 # ---- ADAMW PARAMETERS ---- #
-learning_rate = 0.01
-beta1 = 0.9
-beta2 = 0.999
-epsilon = 1e-8
+learning_rate = 0.01 # Adjusted for OPENAI- scale models
+beta1 = 0.9 # Standard in AdamW
+beta2 = 0.95 # DeepSeek-style beta2
+epsilon = 1e-8 # Helps numerical stability
 weight_decay = 0.01
 
 # Initialize AdamW moment estimates
@@ -105,6 +105,16 @@ for epoch in range(epochs):
     # Compute loss
     loss = compute_cross_entropy_loss(probabilities, ground_truth_tokens)
     loss_history.append(loss)
+
+    # Compute entropy of attention matrix
+    attn_entropy = entropy(attention_weights.flatten())
+    attention_entropy.append(attn_entropy)
+
+    # Store analysis data
+    embedding_history.append(X.copy())
+    attention_history.append(attention_weights.copy())
+    singular_values = np.linalg.svd(output, compute_uv=False)
+    ffn_singular_values.append(singular_values)
 
     # ---- BACKPROPAGATION ---- #
     grad_output = probabilities
@@ -159,6 +169,17 @@ for epoch in range(epochs):
     # SVD analysis on FFN outputs
     singular_values = np.linalg.svd(output, compute_uv=False)
     ffn_singular_values.append(singular_values)
+
+# ---- PLOT ATTENTION ENTROPY ---- #
+plt.figure(figsize=(6,4))
+plt.plot(attention_entropy, label="Attention Entropy")
+plt.xlabel("Epoch")
+plt.ylabel("Entropy")
+plt.title("Entropy of Attention Matrix Over Training")
+plt.legend()
+plt.grid()
+plt.savefig(os.path.join(experiment_dir, "attention_entropy.png"))
+plt.close()
 
 # ---- PLOT LOSS CURVE ---- #
 plt.figure(figsize=(6,4))
