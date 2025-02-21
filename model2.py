@@ -37,6 +37,34 @@ embedding_history = []
 attention_history = []
 ffn_singular_values = []
 attention_entropy = [] 
+mutual_info_history = []
+output_entropy_history = []
+
+# ---- ENTROPY FUNCTIONS ---- #
+def compute_entropy(probabilities):
+    return np.mean([entropy(prob) for prob in probabilities])
+
+def compute_conditional_entropy(joint_probs):
+    # Compute conditional entropy H(X|Y)
+    marginal_y = np.sum(joint_probs, axis=0)
+    conditional_probs = joint_probs / (marginal_y + 1e-10)
+    return -np.sum(joint_probs * np.log(conditional_probs + 1e-10))
+
+def compute_mutual_information(joint_probs):
+    # Compute marginal probabilities
+    marginal_x = np.sum(joint_probs, axis=1)
+    marginal_y = np.sum(joint_probs, axis=0)
+    
+    # Compute entropies
+    H_X = -np.sum(marginal_x * np.log(marginal_x + 1e-10))
+    H_Y = -np.sum(marginal_y * np.log(marginal_y + 1e-10))
+    H_XY = -np.sum(joint_probs * np.log(joint_probs + 1e-10))
+    
+    # Mutual information is I(X;Y) = H(X) + H(Y) - H(X,Y)
+    return H_X + H_Y - H_XY
+
+def compute_relative_mutual_information(I_XY, H_X):
+    return I_XY / H_X if H_X != 0 else 0
 
 # ---- PLOTTING FUNCTION ---- #
 def plot_embeddings(embeddings, title, filename, method="PCA"):
@@ -102,7 +130,25 @@ for epoch in range(epochs):
     output = hidden @ W_FFN2
     probabilities = np.exp(output) / np.sum(np.exp(output), axis=1, keepdims=True)
 
-    # Compute loss
+     # Compute Entropy of Outputs
+    H_Y = compute_entropy(probabilities)
+    output_entropy_history.append(H_Y)
+    
+    # Compute joint probability matrix between input and output
+    joint_probs = np.zeros((vocab_size, vocab_size))
+    predictions = np.argmax(probabilities, axis=1)
+    # Clip predictions to be within vocabulary range
+    predictions = np.clip(predictions, 0, vocab_size - 1)
+    for i, j in zip(input_tokens, predictions):
+        joint_probs[i, j] += 1
+    joint_probs /= len(input_tokens)
+    
+    # Compute mutual information
+    I_XY = compute_mutual_information(joint_probs)
+    H_X = -np.sum(np.sum(joint_probs, axis=1) * np.log(np.sum(joint_probs, axis=1) + 1e-10))
+    mutual_info_history.append(compute_relative_mutual_information(I_XY, H_X))
+    
+    # Compute loss ( Loss tracking)
     loss = compute_cross_entropy_loss(probabilities, ground_truth_tokens)
     loss_history.append(loss)
 
@@ -190,6 +236,28 @@ plt.title("Loss Evolution During Training")
 plt.legend()
 plt.grid()
 plt.savefig(os.path.join(experiment_dir, "loss_curve.png"))
+plt.close()
+
+# ---- PLOT ENTROPY OVER TIME ---- #
+plt.figure(figsize=(6,4))
+plt.plot(output_entropy_history, label="Output Entropy")
+plt.xlabel("Epoch")
+plt.ylabel("Entropy")
+plt.title("Entropy Evolution During Training")
+plt.legend()
+plt.grid()
+plt.savefig(os.path.join(experiment_dir, "output_entropy_curve.png"))
+plt.close()
+
+# ---- PLOT MUTUAL INFORMATION OVER TIME ---- #
+plt.figure(figsize=(6,4))
+plt.plot(mutual_info_history, label="Relative Mutual Information")
+plt.xlabel("Epoch")
+plt.ylabel("RMI")
+plt.title("Relative Mutual Information During Training")
+plt.legend()
+plt.grid()
+plt.savefig(os.path.join(experiment_dir, "mutual_info_curve.png"))
 plt.close()
 
 # ---- VISUALIZE EMBEDDING EVOLUTION ---- #
