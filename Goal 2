@@ -1,0 +1,15 @@
+👉 Our goal should be to extract and interpret these structures.
+
+Some key mathematical questions we could investigate:
+	1.	Do Transformers Learn a Geometric Representation of Meaning?
+	•	If we track how embeddings evolve, do we see words forming geometric structures (clusters, manifolds, linear subspaces)?
+	•	If addition in transformers is not explicit arithmetic, is it encoded as a geometric transformation?
+	•	Can we derive a closed-form function that describes how the model stores knowledge?
+	2.	Is Attention Mechanistically Predictable?
+	•	Can we predict what attention weights should be before training?
+	•	Do attention heads converge to specific patterns that match human intuition?
+	•	If attention is self-organizing, is it constrained by simple mathematical principles?
+	3.	Are There Phase Transitions in Learning?
+	•	If loss decreases non-linearly, does that mean the model undergoes discrete shifts in representation?
+	•	Can we derive a function that predicts at which epoch embeddings should organize into clusters?
+	•	Do self-attention matrices suddenly shift into low-rank structures at a specific point in training?

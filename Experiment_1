@@ -1,0 +1,72 @@
+1️⃣ Experiment Setup
+
+🔹 Hypothesis
+
+We implemented a tiny transformer with the following components:
+	•	Self-Attention Mechanism
+	•	Feedforward Layers
+	•	Softmax Attention Weights
+	•	Cross-Entropy Loss Function
+	•	Training for 100 Epochs
+
+If transformers learn by refining embeddings and attention over time, we expect:
+✅ Embeddings should cluster over training.
+✅ Self-attention should start random but become structured.
+✅ Loss should decrease over time.
+
+Loss Curve	Should decrease as the model learns	🚨 Loss remains constant
+Self-Attention	Should start random but focus over time	🚨 No meaningful change after 100 epochs
+Embeddings (PCA & UMAP)	Should evolve into structured clusters	🚨 Minimal movement, no clear learning trajectory
+Feedforward Singular Values	Should collapse as data is compressed	🚨 No change—suggesting FFN is not updating
+
+ Key Finding: The transformer is executing forward passes correctly, but no learning is happening.
+
+
+ 3️⃣ Hypotheses for Why the Model Isn’t Learning
+
+1️⃣ Gradient Updates May Not Be Applied
+	•	The model computes loss, but are we updating weights correctly?
+	•	Possible Fix: Add explicit weight updates using backpropagation and gradient descent.
+
+2️⃣ Softmax Scaling May Be Too Sharp
+	•	Attention appears “winner-takes-all”, focusing only on single tokens.
+	•	Possible Fix: Adjust temperature scaling in Softmax to distribute attention more evenly.
+
+3️⃣ Loss Function May Not Be Affecting Weights Properly
+	•	If gradients vanish or aren’t used in updates, learning won’t happen.
+	•	Possible Fix: Debug gradient flow and check whether loss contributes to weight changes.
+
+	 Next Steps: Debugging & Fixing Learning
+
+🔍 Immediate Action:
+📌 Examine the code to find where weight updates might be missing or ineffective.
+
+📌 Introduce backpropagation explicitly and ensure weight updates apply at each epoch.
+
+📌 Modify Softmax Scaling if attention weights remain too sharp.
+
+📌 Confirm Gradient Flow using numerical checks (e.g., print gradients at each step).
+
+
+
+Now, I can confirm the problem:
+🚨 You’re running forward passes, but weights are never updated!
+	•	We are computing loss, but the model never adjusts weights based on that loss.
+	•	In LLM training, this is handled by gradient descent (like Adam or SGD), but in NumPy, we must do it manually.
+
+    Solution: Adding Backpropagation & Weight Updates
+
+1️⃣ What’s Missing?
+
+The model computes:
+✅ Embeddings → Attention → Feedforward → Softmax → Loss
+🚨 But then… it does nothing with the loss!
+	•	We need gradients (i.e., how much each weight affects loss).
+	•	We need to update weights using gradient descent.
+
+    To train properly, we need:
+	1.	Compute gradients manually using backpropagation.
+	2.	Apply a learning rate to update weights.
+	3.	Ensure updates happen after each epoch.
+
+Here’s the corrected version of your training loop with weight updates:

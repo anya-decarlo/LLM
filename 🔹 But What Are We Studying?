@@ -1,0 +1,21 @@
+🔹 But What Are We Studying?
+
+Since LLMs already know everything they will ever know before deployment, we are studying what happens before that stage:
+
+We are investigating:
+
+✅ What structures form during training?
+	•	How do embeddings go from random noise to meaningful representations?
+	•	Do we see geometric structures like manifolds or spirals emerge in embedding space?
+
+✅ How does self-attention evolve?
+	•	Does attention start random and then sharpen into focused token relationships?
+	•	Do certain words always become “key tokens” during learning?
+
+✅ How does the transformer compress information?
+	•	Do we see singular value collapse in FFNs as redundant information is removed?
+	•	Does the network become more efficient over time?
+
+✅ What mathematical principles govern training?
+	•	Does transformer training follow power laws, symmetry, or phase transitions?
+	•	Can we predict when learning will accelerate based on entropy reduction?

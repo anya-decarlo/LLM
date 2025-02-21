@@ -1,0 +1,21 @@
+ Contributions for a Paper
+	1.	Tracking Learning in High-Dimensional Space
+	•	Most papers focus on final performance, but very few analyze how embeddings and attention weights evolve over time.
+	•	We could track how word embeddings, attention, and feedforward outputs change during training.
+	•	By applying differential geometry (e.g., studying how the trajectory of embeddings forms curves, manifolds, or chaotic structures), we could identify hidden structures in learning.
+	2.	Empirical Visualization of Transformer Learning Dynamics
+	•	Most transformer interpretability work is post-hoc, meaning it analyzes already trained models.
+	•	We will analyze learning at every step—before training, mid-training, and after.
+	•	By visualizing attention over multiple training epochs, we could find new patterns in how a transformer prioritizes words as it learns.
+	3.	Comparing Training Strategies in Small Transformers
+	•	Can small transformers learn effectively with fewer parameters than expected?
+	•	Do self-attention patterns converge differently in tiny models?
+	•	If we restrict training data, will attention heads develop memorization strategies instead of generalization?
+	4.	Mathematical Interpretability: Geometric and Topological Analysis
+	•	We can analyze whether learning follows a helix-like structure, a common hypothesis in LLM research.
+	•	Use persistent homology or dimensionality reduction techniques (like UMAP) to see how clusters emerge.
+	•	Apply Fourier analysis to track periodic learning patterns.
+	5.	How Small Transformers Handle Arithmetic and Logical Reasoning
+	•	Instead of just training on text, we could see if a small transformer learns simple math relationships (like addition or ordering).
+	•	Could learning numbers form an emergent number line in latent space?
+	•	Does attention between numbers follow predictable geometric transformations?

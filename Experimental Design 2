@@ -1,0 +1,19 @@
+Instead of focusing only on training a model, we should focus on:
+	•	Mathematically characterizing the transformations inside it.
+	•	Finding closed-form descriptions of emergent behaviors.
+
+Here’s a new possible experiment design:
+
+1️⃣ Extracting the Geometry of Embeddings
+	•	Apply Principal Component Analysis (PCA), t-SNE, and UMAP over multiple training epochs to see how words move in space.
+	•	If words naturally form a manifold or a low-dimensional structure, this suggests embeddings have learnable geometric constraints.
+	•	Test whether embeddings align to known mathematical groups (e.g., rotational symmetries, Lie groups).
+
+2️⃣ Predicting Attention Weight Convergence
+	•	Fit a function to predict the self-attention matrix at epoch  t , using earlier epochs as input.
+	•	If attention follows deterministic paths, we may be able to describe it with a simple equation.
+	•	If attention patterns snap into place suddenly, this suggests phase transitions.
+
+3️⃣ Checking for Information Compression in Feedforward Networks
+	•	Do FFN layers reduce redundant information?
+	•	Measure the rank of intermediate representations—if dimensionality collapses, this suggests efficient information compression.

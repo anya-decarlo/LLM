@@ -1,0 +1,24 @@
+Experimental Design for a Paper
+
+Now that we have an idea of what we could learn, here’s an outline for a possible academic study:
+
+1. Baseline: Visualizing a Transformer Before Training
+	•	PCA plots of word embeddings before learning.
+	•	Heatmaps of random self-attention.
+	•	Softmax output distributions before learning.
+
+2. Training on a Tiny Corpus
+	•	A dataset of simple English sentences (or math-based questions if we test reasoning).
+	•	Train in stages, stopping at different points to analyze learning.
+
+3. Tracking Learning in the Latent Space
+	•	Run PCA, t-SNE, or UMAP at each epoch to track how embeddings cluster over time.
+	•	Observe if attention follows structured learning or chaotic adaptation.
+
+4. Mathematical Analysis of Learning
+	•	Do embedding trajectories align with geometric transformations?
+	•	Can we predict how an embedding will move before it learns?
+
+5. Novel Findings
+	•	Are there fundamental rules for how transformers learn?
+	•	Are attention heads assigned to specific tasks without direct supervision
