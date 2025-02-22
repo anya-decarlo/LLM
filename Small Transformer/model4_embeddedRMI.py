@@ -21,7 +21,7 @@ hidden_dim = 32
 seq_length = 4
 num_heads = 1
 num_layers = 1
-epochs = 100
+epochs = 2
 
 # ---- RANDOM INITIALIZATION ---- #
 np.random.seed(42)

@@ -1,0 +1,325 @@
+
+==================================================
+Timestamp: 2025-02-22 00:13:08
+Starting new training session
+
+==================================================
+Timestamp: 2025-02-22 00:13:19
+
+Epoch 10/100
+Loss per token: 0.0486
+
+==================================================
+Timestamp: 2025-02-22 00:13:19
+
+Evaluating Logical Reasoning Capabilities
+==================================================
+
+Testing Novel Statements:
+------------------------------
+
+Test 1:
+Rule: If a number is even, it is divisible by 2.
+Fact: 14 is even.
+Expected: 14 is divisible by 2.
+Predicted: <EOS>
+Correct: ❌
+
+Test 2:
+Rule: If a number is greater than 20, it is greater than 15.
+Fact: 25 is greater than 20.
+Expected: 25 is greater than 15.
+Predicted: <EOS>
+Correct: ❌
+
+Test 3:
+Rule: When something is cold, it has low temperature.
+Fact: The ice is cold.
+Expected: The ice has low temperature.
+Predicted: <EOS>
+Correct: ❌
+
+Test 4:
+Rule: X always results in Y.
+Fact: The metal is heated.
+Expected: The metal expands.
+Predicted: <EOS>
+Correct: ❌
+
+Accuracy for Testing Novel Statements: 0.0%
+
+Testing Multi-step Logic:
+------------------------------
+
+Test 1:
+Rule: If A is more than B, and B is more than C, then A is more than C.
+Fact: 15 is more than 10, and 10 is more than 5.
+Expected: 15 is more than 5.
+Predicted: <EOS>
+Correct: ❌
+
+Test 2:
+Rule: If it rains, the ground gets wet. If the ground is wet, it becomes slippery.
+Fact: It is raining.
+Expected: The ground becomes slippery.
+Predicted: <EOS>
+Correct: ❌
+
+Accuracy for Testing Multi-step Logic: 0.0%
+
+Testing with Minimal Context:
+------------------------------
+
+Test 1:
+Rule: If X is A, then X is B.
+Fact: Thing1 is A.
+Expected: Thing1 is B.
+Predicted: <EOS>
+Correct: ❌
+
+Test 2:
+Rule: When X is not Y, X cannot be Z.
+Fact: Thing2 is not Y.
+Expected: Thing2 cannot be Z.
+Predicted: <EOS>
+Correct: ❌
+
+Accuracy for Testing with Minimal Context: 0.0%
+
+Overall Analysis:
+==================================================
+Average accuracy across all categories: 0.0%
+
+Strengths and Weaknesses:
+Novel Statements: 0.0% - Needs Improvement
+Multi-step Logic: 0.0% - Needs Improvement
+Minimal Context: 0.0% - Needs Improvement
+
+==================================================
+Timestamp: 2025-02-22 00:13:26
+Total training time: 0.29 minutes
+
+==================================================
+Timestamp: 2025-02-22 00:17:30
+Starting new training session
+
+==================================================
+Timestamp: 2025-02-22 00:17:30
+
+Epoch 10/100
+Loss per token: 0.0129
+
+==================================================
+Timestamp: 2025-02-22 00:17:30
+
+Evaluating Logical Reasoning Capabilities
+==================================================
+
+Testing Novel Statements:
+------------------------------
+
+Test 1:
+Rule: If a number is even, it is divisible by 2.
+Fact: 14 is even.
+Expected: 14 is divisible by 2.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Test 2:
+Rule: If a number is greater than 20, it is greater than 15.
+Fact: 25 is greater than 20.
+Expected: 25 is greater than 15.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Test 3:
+Rule: When something is cold, it has low temperature.
+Fact: The ice is cold.
+Expected: The ice has low temperature.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Test 4:
+Rule: X always results in Y.
+Fact: The metal is heated.
+Expected: The metal expands.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Accuracy for Testing Novel Statements: 0.0%
+
+Testing Multi-step Logic:
+------------------------------
+
+Test 1:
+Rule: If A is more than B, and B is more than C, then A is more than C.
+Fact: 15 is more than 10, and 10 is more than 5.
+Expected: 15 is more than 5.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Test 2:
+Rule: If it rains, the ground gets wet. If the ground is wet, it becomes slippery.
+Fact: It is raining.
+Expected: The ground becomes slippery.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Accuracy for Testing Multi-step Logic: 0.0%
+
+Testing with Minimal Context:
+------------------------------
+
+Test 1:
+Rule: If X is A, then X is B.
+Fact: Thing1 is A.
+Expected: Thing1 is B.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Test 2:
+Rule: When X is not Y, X cannot be Z.
+Fact: Thing2 is not Y.
+Expected: Thing2 cannot be Z.
+Predicted: <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Correct: ❌
+
+Accuracy for Testing with Minimal Context: 0.0%
+
+Overall Analysis:
+==================================================
+Average accuracy across all categories: 0.0%
+
+Strengths and Weaknesses:
+Novel Statements: 0.0% - Needs Improvement
+Multi-step Logic: 0.0% - Needs Improvement
+Minimal Context: 0.0% - Needs Improvement
+
+==================================================
+Timestamp: 2025-02-22 00:17:30
+Total training time: 0.01 minutes
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Starting new training session with curriculum learning
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+
+Model Architecture:
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Vocab Size: 278
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Model Dimension: 512
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Number of Heads: 8
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Encoder Layers: 6
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Decoder Layers: 6
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Feedforward Dimension: 2048
+
+==================================================
+Timestamp: 2025-02-22 01:01:22
+Dropout: 0.1
+
+==================================================
+Timestamp: 2025-02-22 01:01:28
+
+Epoch 10/100
+Loss Components:
+  Total Loss: 6.0052
+  Base Loss: 5.9875
+  Reward: -0.1767
+  Gradient Norm: 30.1659
+  Parameter Norm: 244.5814
+  Reward Scale: 0.1000
+Learning rate: 0.000002
+Curriculum level: 0
+
+==================================================
+Timestamp: 2025-02-22 01:01:38
+
+Epoch 20/100
+Loss Components:
+  Total Loss: 4.7811
+  Base Loss: 4.7664
+  Reward: -0.1465
+  Gradient Norm: 18.1254
+  Parameter Norm: 244.5815
+  Reward Scale: 0.1000
+Learning rate: 0.000003
+Curriculum level: 1
+
+==================================================
+Timestamp: 2025-02-22 01:01:49
+
+Epoch 30/100
+Loss Components:
+  Total Loss: 3.8658
+  Base Loss: 3.8489
+  Reward: -0.1689
+  Gradient Norm: 9.8801
+  Parameter Norm: 244.5815
+  Reward Scale: 0.1000
+Learning rate: 0.000005
+Curriculum level: 2
+
+==================================================
+Timestamp: 2025-02-22 01:01:53
+
+Test Case:
+Premise 1: If a number is even, it is divisible by 2.
+Premise 2: 8 is even.
+Expected: 8 is divisible by 2.
+Got: is is is is. is.. is is is is is is is is is. is is is is is..... is is..................................
+Correct: False
+
+Test Case:
+Premise 1: If a number is greater than 10, it is greater than 5.
+Premise 2: 15 is greater than 10.
+Expected: 15 is greater than 5.
+Got: is is is...... is is is is is is... is is is is is is... is is is........ is.........................
+Correct: False
+
+Test Case:
+Premise 1: When something is cold, it has low temperature.
+Premise 2: Ice is cold.
+Expected: Ice has low temperature.
+Got: is is is is...... is is is is is... is is is is is.........................................
+Correct: False
+
+Test Case:
+Premise 1: When metal is heated, it expands.
+Premise 2: The ring is heated.
+Expected: The ring expands.
+Got: is is is................. is...........................................
+Correct: False
+
+Test Case:
+Premise 1: If A implies B, and B implies C, then A implies C.
+Premise 2: Rain implies wet ground, and wet ground implies mud.
+Expected: Rain implies mud.
+Got: . is........ is is is is.... is is is is is..... is is..................................
+Correct: False
+
+==================================================
+Timestamp: 2025-02-22 01:01:53
+Error during training: Tensors must have same number of dimensions: got 2 and 1
+
+==================================================
+Timestamp: 2025-02-22 01:01:53
+Total training time: 0.54 minutes

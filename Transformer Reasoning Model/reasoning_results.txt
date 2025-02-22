@@ -1,0 +1,112 @@
+
+==================================================
+Timestamp: 2025-02-22 00:55:13
+Starting new training session with curriculum learning
+
+==================================================
+Timestamp: 2025-02-22 00:55:19
+
+Epoch 10/100
+Loss per token: 0.1112
+Learning rate: 0.000002
+Curriculum level: 0
+
+==================================================
+Timestamp: 2025-02-22 00:55:29
+
+Epoch 20/100
+Loss per token: 0.0460
+Learning rate: 0.000003
+Curriculum level: 1
+
+==================================================
+Timestamp: 2025-02-22 00:55:39
+
+Epoch 30/100
+Loss per token: 0.0339
+Learning rate: 0.000005
+Curriculum level: 2
+
+==================================================
+Timestamp: 2025-02-22 00:55:44
+
+Test Case:
+Premise 1: If a number is even, it is divisible by 2.
+Premise 2: 8 is even.
+Expected: 8 is divisible by 2.
+Got: is is is is. is.. is is is is is is is is is. is is is is is..... is is..................................
+Correct: False
+
+Test Case:
+Premise 1: If a number is greater than 10, it is greater than 5.
+Premise 2: 15 is greater than 10.
+Expected: 15 is greater than 5.
+Got: is is is...... is is is is is is... is is is is is is... is is is........ is.........................
+Correct: False
+
+Test Case:
+Premise 1: When something is cold, it has low temperature.
+Premise 2: Ice is cold.
+Expected: Ice has low temperature.
+Got: is is is is...... is is is is is... is is is is is.........................................
+Correct: False
+
+Test Case:
+Premise 1: When metal is heated, it expands.
+Premise 2: The ring is heated.
+Expected: The ring expands.
+Got: is is is................. is...........................................
+Correct: False
+
+Test Case:
+Premise 1: If A implies B, and B implies C, then A implies C.
+Premise 2: Rain implies wet ground, and wet ground implies mud.
+Expected: Rain implies mud.
+Got: . is........ is is is is.... is is is is is..... is is..................................
+Correct: False
+
+==================================================
+Timestamp: 2025-02-22 00:55:44
+Error during training: Tensors must have same number of dimensions: got 2 and 1
+
+==================================================
+Timestamp: 2025-02-22 00:55:44
+Total training time: 0.54 minutes
+
+==================================================
+Timestamp: 2025-02-22 00:55:51
+
+Test Case:
+Premise 1: If a number is even, it is divisible by 2.
+Premise 2: 8 is even.
+Expected: 8 is divisible by 2.
+Got: is is is is. is.. is is is is is is is is is. is is is is is..... is is..................................
+Correct: False
+
+Test Case:
+Premise 1: If a number is greater than 10, it is greater than 5.
+Premise 2: 15 is greater than 10.
+Expected: 15 is greater than 5.
+Got: is is is...... is is is is is is... is is is is is is... is is is........ is.........................
+Correct: False
+
+Test Case:
+Premise 1: When something is cold, it has low temperature.
+Premise 2: Ice is cold.
+Expected: Ice has low temperature.
+Got: is is is is...... is is is is is... is is is is is.........................................
+Correct: False
+
+Test Case:
+Premise 1: When metal is heated, it expands.
+Premise 2: The ring is heated.
+Expected: The ring expands.
+Got: is is is................. is...........................................
+Correct: False
+
+Test Case:
+Premise 1: If A implies B, and B implies C, then A implies C.
+Premise 2: Rain implies wet ground, and wet ground implies mud.
+Expected: Rain implies mud.
+Got: . is........ is is is is.... is is is is is..... is is..................................
+Correct: False
